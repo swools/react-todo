@@ -2,6 +2,7 @@ import React from "react";
 // import ToDoList from "./components/ToDoList.js";
 import "./App.css";
 import ToDoItems from "./components/ToDoItems";
+import ToDoList from "./components/ToDoList";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
     };
     this.addItem = this.addItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   handleChange(e) {
@@ -20,7 +22,7 @@ class App extends React.Component {
   }
 
   addItem(e) {
-    if (this.state.value.text == '') {
+    if (this.state.value.text === '') {
       e.preventDefault();
       return
     } else {
@@ -34,22 +36,20 @@ class App extends React.Component {
 
   }
 
+  removeItem() {
+    console.log("CLICKED");
+  }
+
+  //Need to add a removeItem function
+
   render() {
     return (
-      <div>
-        <div className="todoListMain">
-          <div className="header">
-            <form onSubmit={this.addItem}>
-              <input
-                placeholder="Task"
-                value={this.state.value.text}
-                onChange={this.handleChange}
-              />
-              <ToDoItems entries={this.state.items} className="entries" />
-              <button type="submit"> Add Task </button>
-            </form>
-          </div>
-        </div>
+      <div className="wrapper">
+        <ToDoList 
+          onChange={this.handleChange} 
+          onSubmit={this.addItem} 
+          value={this.state.value.text}  
+        />
       </div>
     );
   }

@@ -1,23 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+import ToDoItems from './ToDoItems'
 
-class ToDoList extends Component {
-  render() {
+const ToDoList = props => {
     return (
       <div className="todoListMain">
         <div className="header">
-          <form onSubmit={this.props.addItem}>
+          <form onSubmit={props.addItem}>
             <input
               placeholder="Task"
-              value={this.props.value.text}
-              onChange={this.props.handleChange}
+              value={props.value.text}
+              onChange={props.handleChange}
             />
-
+            <ToDoItems entries={this.props.items}/>
             <button type="submit"> Add Task </button>
           </form>
         </div>
       </div>
     );
-  }
 }
 
 export default ToDoList;
