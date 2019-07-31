@@ -20,11 +20,18 @@ class App extends React.Component {
   }
 
   addItem(e) {
-    this.setState({
-      items: this.state.items.concat(this.state.value)
-    });
+    if (this.state.value.text == '') {
+      e.preventDefault();
+      return
+    } else {
+      this.setState({
+        items: this.state.items.concat(this.state.value),
+        value: {text: "", key: ""}
+      });
+  
+      e.preventDefault();
+    }
 
-    e.preventDefault();
   }
 
   render() {
