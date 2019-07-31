@@ -3,19 +3,14 @@ import ToDoItems from './ToDoItems'
 
 const ToDoList = props => {
     return (
-      <div className="todoListMain">
-        <div className="header">
-          <form onSubmit={props.addItem}>
-            <input
-              placeholder="Task"
-              value={props.value.text}
-              onChange={props.handleChange}
-            />
-            <ToDoItems entries={this.props.items}/>
-            <button type="submit"> Add Task </button>
-          </form>
-        </div>
-      </div>
+      <ul>
+        {props.list.map((item, index) => (
+          <ToDoItems
+            key={index}
+            item={item.name}
+          />
+        ))}
+      </ul>
     );
 }
 

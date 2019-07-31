@@ -1,8 +1,8 @@
 import React from "react";
 // import ToDoList from "./components/ToDoList.js";
 import "./App.css";
-import ToDoItems from "./components/ToDoItems";
 import ToDoList from "./components/ToDoList";
+import InputForm from "./components/InputForm";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends React.Component {
 
     this.state = {
       value: { text: "", key: "" },
-      items: []
+      list: []
     };
     this.addItem = this.addItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,14 +26,15 @@ class App extends React.Component {
       e.preventDefault();
       return
     } else {
+      e.preventDefault();
       this.setState({
-        items: this.state.items.concat(this.state.value),
+        list: this.state.list.concat(this.state.value),
         value: {text: "", key: ""}
       });
+     
   
-      e.preventDefault();
+      
     }
-
   }
 
   removeItem() {
@@ -45,11 +46,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <ToDoList 
-          onChange={this.handleChange} 
-          onSubmit={this.addItem} 
+        <InputForm 
+          handleChange={this.handleChange} 
+          addItem={this.addItem} 
           value={this.state.value.text}  
         />
+        <ToDoList list={this.state.list} value={this.state.value.text}/>
       </div>
     );
   }
