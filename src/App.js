@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import ToDoList from "./components/ToDoList.js";
+import "./App.css";
+import ToDoItems from "./components/ToDoItems";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: { text: "", key: "" },
+      items: []
+    };
+    this.addItem = this.addItem.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ value: { text: e.target.value, key: Date.now() } });
+  }
+
+  addItem(e) {
+    this.setState({
+      items: this.state.items.concat(this.state.value)
+    });
+
+    e.preventDefault();
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="todoListMain">
+          <div className="header">
+            <form onSubmit={this.addItem}>
+              <input
+                placeholder="Task"
+                value={this.state.value.text}
+                onChange={this.handleChange}
+              />
+              <ToDoItems entries={this.state.items} className="entries" />
+              <button type="submit"> Add Task </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

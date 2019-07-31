@@ -31,3 +31,30 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  background: #05386b;
+  min-width: 300px;
+  margin: 0 auto;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+input {
+  padding: 1rem;
+}
+
+button {
+  padding: 1rem;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #5cdb95;
+}
