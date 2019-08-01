@@ -7,7 +7,7 @@ const InputForm = props => {
             className="input"
             type="text"
             onChange={props.handleChange}
-            value={props.value.text}
+            value={props.value}
             placeholder="Task"
         />
         <button type="submit" name="submit" value="submit">Add Task</button>

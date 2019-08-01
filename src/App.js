@@ -28,18 +28,22 @@ class App extends React.Component {
     } else {
       e.preventDefault();
       this.setState({
-        list: this.state.list.concat(this.state.value),
-        value: {text: "", key: ""}
-      });
-     
-  
-      
+        list: this.state.list.concat(this.state.value.text),
+        value: {text: ""}
+      }
+      );  
     }
   }
 
-  removeItem() {
-    console.log("CLICKED");
-  }
+  removeItem = index => {
+    const newState = this.state.list.filter(item => 
+      this.state.list.indexOf(item) !== index
+    );
+
+    this.setState({ 
+      list: newState
+    });
+  };
 
   //Need to add a removeItem function
 
@@ -51,7 +55,7 @@ class App extends React.Component {
           addItem={this.addItem} 
           value={this.state.value.text}  
         />
-        <ToDoList list={this.state.list} value={this.state.value.text}/>
+        <ToDoList list={this.state.list} removeItem={this.removeItem} />
       </div>
     );
   }

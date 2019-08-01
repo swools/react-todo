@@ -3,11 +3,13 @@ import ToDoItems from './ToDoItems'
 
 const ToDoList = props => {
     return (
-      <ul>
+      <ul className="todo_list">
         {props.list.map((item, index) => (
           <ToDoItems
             key={index}
-            item={item.name}
+            item={item}
+            itemIndex={index}
+            removeItem={props.removeItem}
           />
         ))}
       </ul>
