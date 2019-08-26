@@ -1,5 +1,4 @@
 import React from "react";
-// import ToDoList from "./components/ToDoList.js";
 import "./App.css";
 import ToDoList from "./components/ToDoList";
 import InputForm from "./components/InputForm";
